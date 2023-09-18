@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     if (rank == 0)
-    {
+    {A
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
                 scanf("%d", &a[i][j]);

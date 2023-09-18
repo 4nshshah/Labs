@@ -3,7 +3,7 @@
 #include <cuda.h>
 
 // Define the size of the vectors
-#define N 10
+#define N 15
 
 // CUDA kernel to add two vectors
 __global__ void vecAdd(float *a, float *b, float *c)
@@ -17,6 +17,7 @@ __global__ void vecAdd(float *a, float *b, float *c)
     c[id] = a[id] + b[id];
   }
 }
+
 // Main function
 int main()
 {
@@ -42,11 +43,15 @@ int main()
   cudaMemcpy(d_a, h_a, N * sizeof(float), cudaMemcpyHostToDevice);
   cudaMemcpy(d_b, h_b, N * sizeof(float), cudaMemcpyHostToDevice);
 
-  // Launching the kernel:
-  // N Blocks, 1 Thread
-  vecAdd<<<N, 1>>>(d_a, d_b, d_c);
-  // 1 block, N threads
-  // vecAdd<<<1, N>>>(d_a, d_b, d_c);
+  // Calculate the number of blocks
+  int numBlocks = N / 256;
+  if (N % 256 != 0)
+  {
+    numBlocks++;
+  }
+
+  // Launch the kernel
+  vecAdd<<<numBlocks, 256>>>(d_a, d_b, d_c);
 
   // Copy the result back from the device to the host
   cudaMemcpy(h_c, d_c, N * sizeof(float), cudaMemcpyDeviceToHost);

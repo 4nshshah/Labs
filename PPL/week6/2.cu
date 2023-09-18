@@ -1,38 +1,47 @@
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <cuda.h>
 #include <string.h>
 
-__global__ void occur(char *a, char *p, int *count, int n)
+#define N 1024
+
+__global__ void CUDACopy(char *d_inp, char *d_out, int len_inp, int len_out)
 {
-    int id = threadIdx.x;
-    int c = 0;
-    for (int i = id; i < id + n; i++)
-        if (a[i] != p[i - id])
-            c += 1;
-    if (c == 0)
-        atomicAdd(count, 1);
+    int tid = threadIdx.x;
+    int diff = len_inp - tid;
+    int start = len_out - (diff * (diff + 1)) / 2;
+    for (int i = 0; i < len_inp - tid; i++)
+        d_out[start + i] = d_inp[i];
 }
 
 int main()
 {
-    char hA[100], *dA, hB[100], *dB;
-    int c = 0;
-    int *count = &c, result, *dC;
-    printf("Enter the string and pattern:\n");
-    scanf("%s", hA);
-    printf("Enter the string and pattern:\n");
-    scanf("%s", hB);
+    char inp[N], out[N];
+    char *d_inp, *d_out;
+    unsigned int size, len;
 
-    cudaMalloc((void **)&dA, strlen(hA) * sizeof(char));
-    cudaMalloc((void **)&dB, strlen(hB) * sizeof(char));
-    cudaMalloc((void **)&dC, sizeof(int));
+    printf("Enter a string: ");
+    scanf(" %[^\n]s", inp);
 
-    cudaMemcpy(dA, hA, strlen(hA) * sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemcpy(dB, hB, strlen(hB) * sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemcpy(dC, count, sizeof(int), cudaMemcpyHostToDevice);
-    int n = strlen(hA) / strlen(hB);
-    occur<<<1, n>>>(dA, dB, dC, n);
-    cudaMemcpy(&result, dC, sizeof(int), cudaMemcpyDeviceToHost);
-    printf("Count:%d\n", result);
+    len = strlen(inp);
+    len = (len * (len + 1)) / 2;
+    size = len * sizeof(char);
+
+    cudaMalloc((void **)&d_inp, strlen(inp) * sizeof(char));
+    cudaMalloc((void **)&d_out, size);
+    cudaMemcpy(d_inp, inp, strlen(inp) * sizeof(char), cudaMemcpyHostToDevice);
+
+    CUDACopy<<<1, strlen(inp)>>>(d_inp, d_out, strlen(inp), len);
+
+    cudaMemcpy(out, d_out, size, cudaMemcpyDeviceToHost);
+    out[len] = '\0';
+
+    printf("Output String: %s\n", out);
+
+    cudaFree(d_inp);
+    cudaFree(d_out);
+
+    return 0;
 }
