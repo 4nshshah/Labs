@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <cuda.h>
 
 const int N = 8; // The number of elements in the array
 
@@ -36,11 +37,10 @@ __global__ void mergeSort(int *arr, int *temp, int n)
         {
             int middle = min(leftStart + currentSize - 1, n - 1);
             int rightEnd = min(leftStart + 2 * currentSize - 1, n - 1);
-            cudaDeviceSynchronize(); // Wait for the kernel to finish
         }
     }
 }
-void hostMergeSort(int *deviceArray, int *deviceTemp, int n)
+__host__ void hostMergeSort(int *deviceArray, int *deviceTemp, int n)
 {
     for (int currentSize = 1; currentSize < n; currentSize *= 2)
     {
