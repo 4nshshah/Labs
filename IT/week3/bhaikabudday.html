@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Card</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      #card {
+        width: 400px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      h1 {
+        color: #e44d26;
+      }
+
+      p {
+        color: #333;
+        font-size: 16px;
+      }
+
+      img {
+        width: 100%;
+        max-width: 300px;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+
+      #birthdayBtn {
+        background-color: #e44d26;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card">
+      <h1>Happy Birthday!</h1>
+      <p>Wishing you a day filled with joy and laughter.</p>
+      <img src="birthday_image.jpg" alt="Birthday Cake" />
+      <p>Enjoy your special day!</p>
+      <button id="birthdayBtn">Open Gift</button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#birthdayBtn").click(function () {
+          alert("Surprise! 🎁 Happy Birthday!");
+        });
+      });
+    </script>
+  </body>
+</html>

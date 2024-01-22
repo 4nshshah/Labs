@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Order</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+      label,
+      input,
+      select,
+      button {
+        margin: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="brand">Select Brand:</label>
+    <select id="brand">
+      <option value="HP">HP</option>
+      <option value="Nokia">Nokia</option>
+      <option value="Samsung">Samsung</option>
+      <option value="Motorola">Motorola</option>
+      <option value="Apple">Apple</option>
+    </select>
+
+    <label>Choose Products:</label>
+    <input type="checkbox" id="mobile" value="Mobile" /> Mobile
+    <input type="checkbox" id="laptop" value="Laptop" /> Laptop
+
+    <label for="quantity">Enter Quantity:</label>
+    <input type="text" id="quantity" />
+
+    <button id="produceBill">Produce Bill</button>
+
+    <script>
+      $(document).ready(function () {
+        $("#produceBill").click(function () {
+          var brand = $("#brand").val();
+          var mobileChecked = $("#mobile").is(":checked");
+          var laptopChecked = $("#laptop").is(":checked");
+          var quantity = parseInt($("#quantity").val()) || 0;
+          var totalAmount = 0;
+
+          if (quantity > 0) {
+            if (mobileChecked) {
+              totalAmount += 500 * quantity; // Assuming mobile cost is $500
+            }
+
+            if (laptopChecked) {
+              totalAmount += 1000 * quantity; // Assuming laptop cost is $1000
+            }
+
+            alert(
+              "Total amount for " +
+                quantity +
+                " " +
+                brand +
+                " product(s): $" +
+                totalAmount
+            );
+          } else {
+            alert("Please enter a valid quantity.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

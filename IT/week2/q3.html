@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> </title>
+  </head>
+  <body onload="rain()">
+    <script type="text/javascript">
+      var n = 1;
+      function rain() {
+        this.rain_len = 100;
+        this.rain_ang = Math.PI / 3;
+        var ctx = myCanvas.getContext("2d");
+        var x = Math.random() * 1920;
+        var y = Math.random() * 1080;
+        ctx.strokeStyle = "blue";
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(
+          x - Math.cos(this.rain_ang) * this.rain_len,
+          y - Math.sin(this.rain_ang) * this.rain_len
+        );
+        ctx.stroke();
+        n = n + 1;
+        if (n == 100) {
+          ctx.clearRect(0, 0, 1800, 600);
+          n = 1;
+        }
+        var t = setTimeout(rain, 15);
+      }
+    </script>
+    <canvas id="myCanvas" width="1200" height="600"> </canvas>
+  </body>
+</html>

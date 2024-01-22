@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+      input,
+      button {
+        margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="num1">Number 1:</label>
+    <input type="text" id="num1" />
+
+    <label for="operator">Operator:</label>
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+
+    <label for="num2">Number 2:</label>
+    <input type="text" id="num2" />
+
+    <button id="calculate">Calculate</button>
+
+    <label for="result">Result:</label>
+    <input type="text" id="result" readonly />
+
+    <script>
+      $(document).ready(function () {
+        $("#calculate").click(function () {
+          var num1 = parseFloat($("#num1").val());
+          var num2 = parseFloat($("#num2").val());
+          var operator = $("#operator").val();
+
+          if (!isNaN(num1) && !isNaN(num2)) {
+            var result;
+
+            switch (operator) {
+              case "+":
+                result = num1 + num2;
+                break;
+              case "-":
+                result = num1 - num2;
+                break;
+              case "*":
+                result = num1 * num2;
+                break;
+              case "/":
+                if (num2 !== 0) {
+                  result = num1 / num2;
+                } else {
+                  alert("Cannot divide by zero!");
+                  return;
+                }
+                break;
+              default:
+                alert("Invalid operator!");
+                return;
+            }
+
+            $("#result").val(result);
+          } else {
+            alert("Please enter valid numbers");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

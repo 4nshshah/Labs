@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+    <title>Real Time Clock</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body style="   margin: 0;
+padding: 0;
+background-color: rgb(57, 66, 191);">
+<script language="javascript">
+    function message()
+    {
+        setInterval(function()
+        {
+            const d = new Date();
+            const n = d.toLocaleTimeString();
+            document.getElementById("clock").innerHTML=n;
+        }, 1000)
+        const d = new Date();
+        var name = "Ansh";
+        var hh=d.getHours();
+        var greeting;
+        if(hh>0&&hh<11)
+        {
+            greeting="Good Morning ";
+        }
+        else if(hh>11&&hh<16)
+        {
+            greeting="Good Afternoon ";
+        }
+        else if(hh>16&&hh<21)
+        {
+            greeting="Good Evening ";
+        }
+        else
+        {
+            greeting = "Good Night ";
+        }
+        alert("Hello "+greeting + name);
+    }
+    message();
+</script>
+<main style="    position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+row-gap: 10px;
+font-family: 'Maria', sans-serif;
+color: white;
+text-align: center;
+text-transform: lowercase;">
+<div class="grid", style="display: grid;
+height: 100%;
+grid-template-columns: 100%;">
+
+    <div class="grid-item", style="margin: 50px;height: 300px;font-size: 30;">
+        <h1>Clock</h1>
+        <div id="clock", style="
+        height: 200px;
+        width: 90%;
+        max-width: 700px;
+        border: 3px solid white;
+        border-radius: 10px;
+        background-color: beige;
+        color: black;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;"></div>
+    </div>
+</div>
+</main>
+</body>
+</html>
+
