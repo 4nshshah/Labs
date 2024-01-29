@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Bio-data Form</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Student Bio-data Form</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="age"
+            placeholder="Enter age"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label><br />
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea
+            class="form-control"
+            id="address"
+            rows="3"
+            placeholder="Enter address"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="courses">Courses:</label>
+          <select class="form-control" id="courses" multiple required>
+            <option>Mathematics</option>
+            <option>Science</option>
+            <option>History</option>
+            <option>English</option>
+            <option>Computer Science</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="interests">Interests:</label><br />
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="reading"
+              value="reading"
+            />
+            <label class="form-check-label" for="reading">Reading</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="sports"
+              value="sports"
+            />
+            <label class="form-check-label" for="sports">Sports</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="music"
+              value="music"
+            />
+            <label class="form-check-label" for="music">Music</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

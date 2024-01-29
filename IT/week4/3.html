@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Layout</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .section {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Top Section</h2>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" />
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">Go</button>
+            </div>
+          </div>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your email"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row section">
+        <div class="col-md-4">
+          <h3>Bottom Left</h3>
+          <button type="button" class="btn btn-success">Success</button>
+          <button type="button" class="btn btn-info">Info</button>
+          <button type="button" class="btn btn-warning">Warning</button>
+        </div>
+        <div class="col-md-4">
+          <h3>Bottom Middle</h3>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Username" />
+            <div class="input-group-append">
+              <span class="input-group-text">@</span>
+            </div>
+          </div>
+          <span class="badge badge-primary">Primary</span>
+          <span class="badge badge-secondary">Secondary</span>
+          <span class="badge badge-success">Success</span>
+        </div>
+        <div class="col-md-4">
+          <h3>Bottom Right</h3>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">Left</button>
+            <button type="button" class="btn btn-secondary">Middle</button>
+            <button type="button" class="btn btn-secondary">Right</button>
+          </div>
+          <div class="input-group mt-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Recipient's username"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                Button
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
