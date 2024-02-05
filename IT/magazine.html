@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magazine Cover Generator</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    #cover {
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+    }
+    #cover img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+</head>
+<body>
+
+<h2>Magazine Cover Generator</h2>
+
+<form id="magazineForm">
+    <label for="image">Select Image:</label>
+    <input type="file" id="image" name="image"><br><br>
+    <label for="backgroundColor">Background Color:</label>
+    <input type="color" id="backgroundColor" name="backgroundColor" value="#ffffff"><br><br>
+    <label for="fontSize">Font Size:</label>
+    <input type="number" id="fontSize" name="fontSize" min="1" max="100" value="16"><br><br>
+    <label for="text">Input Message:</label>
+    <input type="text" id="text" name="text"><br><br>
+    <label for="fontColor">Font Color:</label>
+    <input type="color" id="fontColor" name="fontColor" value="#000000"><br><br>
+    <button type="button" id="generateCoverBtn">Generate Front Cover</button>
+</form>
+
+<div id="cover"></div>
+
+<script>
+$(document).ready(function(){
+    $("#generateCoverBtn").click(function(){
+        var imageUrl = $("#image").val();
+        var backgroundColor = $("#backgroundColor").val();
+        var fontSize = $("#fontSize").val();
+        var text = $("#text").val();
+        var fontColor = $("#fontColor").val();
+
+        // Create HTML for the front cover
+        var coverHtml = "<div style='background-color: " + backgroundColor + "; padding: 20px;'>";
+        coverHtml += "<img src='" + imageUrl + "' alt='Cover Image'><br>";
+        coverHtml += "<p style='font-size: " + fontSize + "px; color: " + fontColor + ";'>" + text + "</p>";
+        coverHtml += "</div>";
+
+        // Display the front cover
+        $("#cover").html(coverHtml);
+    });
+});
+</script>
+
+</body>
+</html>
