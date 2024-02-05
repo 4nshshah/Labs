@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Promotion Eligibility</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h2>Employee Promotion Eligibility</h2>
+
+<form id="promotionForm">
+    <label for="employeeId">Employee ID:</label>
+    <input type="text" id="employeeId" name="employeeId" required><br><br>
+    <label for="dateOfJoining">Date of Joining:</label>
+    <input type="date" id="dateOfJoining" name="dateOfJoining" required><br><br>
+    <button type="button" id="checkPromotionBtn">Check Promotion Eligibility</button>
+</form>
+
+<div id="promotionResult"></div>
+
+<script>
+$(document).ready(function(){
+    // Function to check promotion eligibility
+    $("#checkPromotionBtn").click(function(){
+        var employeeId = $("#employeeId").val();
+        var dateOfJoining = new Date($("#dateOfJoining").val());
+        var currentDate = new Date();
+
+        // Calculate years of experience
+        var yearsOfExperience = (currentDate - dateOfJoining) / (1000 * 60 * 60 * 24 * 365);
+
+        // Check if employee is eligible for promotion (more than 5 years of experience)
+        if (yearsOfExperience >= 5) {
+            $("#promotionResult").html("<p>Employee with ID " + employeeId + " is eligible for promotion.</p>");
+        } else {
+            $("#promotionResult").html("<p>Employee with ID " + employeeId + " is not eligible for promotion.</p>");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
