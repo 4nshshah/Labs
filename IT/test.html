@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Voting</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="https://img.freepik.com/free-photo/red-white-cat-i-white-studio_155003-13189.jpg" alt="cat pic" width="100" >
+                <button id="cat">Vote Cat</button>
+            </div>
+            <div class="col">
+                <img src="https://qph.cf2.quoracdn.net/main-qimg-3eb1e730a18642c15fb90ae5ecb2d42d" alt="dog pic" width = "100">
+                <button id="dog">Vote</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button id="submit" class="btn-primary">Submit</button>
+    <br>
+        <div id="catr"></div>
+        <p id="dogr"></p>
+        <p id="lessthan"></p>
+    <script>
+        $("document").ready(function(){
+            var cat = 0;
+            var dog = 0;
+            $("#cat").click(function(){
+                cat += 1;
+            });
+            $("#dog").click(function(){
+                dog += 1;
+            });
+            $("#submit").click(function(){
+                var unsucc = "";
+                if(cat<5){
+                    unsucc = "cat " + unsucc;
+                }
+                
+                if(dog<5){
+                    unsucc = "dog " + unsucc;
+                }
+                $("#catr").text( "CATS: " + cat);
+                $("#dogr").text("DOGS: " + dog);
+                $("#lessthan").text(unsucc);
+            });
+
+        });
+    </script>
+</body>
+</html>
