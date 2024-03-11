@@ -1,0 +1,23 @@
+{% block content %}
+<h1>Add Website</h1>
+<form method="post">
+  {% csrf_token %}
+  <div>
+    <label for="{{ form.title.id_for_label }}">Title:</label>
+    {{ form.title }} {{ form.title.errors }}
+  </div>
+  <div>
+    <label for="{{ form.url.id_for_label }}">URL:</label>
+    {{ form.url }} {{ form.url.errors }}
+  </div>
+  <div>
+    <label for="{{ form.category.id_for_label }}">Category:</label>
+    <select name="category" id="{{ form.category.id_for_label }}">
+      {% for category in categories %}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit">Save Website</button>
+</form>
+{% endblock %}

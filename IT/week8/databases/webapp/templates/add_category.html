@@ -1,0 +1,15 @@
+<h1>Add Category</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <label>Name:</label>
+  <input type="text" name="name" />
+
+  <label>Visits:</label>
+  <input type="number" name="visits" />
+
+  <label>Likes:</label>
+  <input type="number" name="likes" />
+
+  <input type="submit" value="Add Category" />
+</form>

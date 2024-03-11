@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>Exercise 2</title>
+</head>
+<body style="text-align: center;">
+    <h1>Registration Form</h1>
+    <form id="user_details" action="{% url 'register' %}" method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-light">Submit</button>
+    </form>
+</body>
+</html>

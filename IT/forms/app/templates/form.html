@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Exercise 1</title>
+</head>
+
+<body style="text-align:center;">
+<form id="details" action="{% url 'form' %}" method="POST">{% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit"><strong>Submit</strong></button>
+</form>
+
+</body>
+</html>

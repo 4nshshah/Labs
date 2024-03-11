@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Retrieve Data</title>
+  </head>
+  <body>
+    <h1>Authors</h1>
+    <ul>
+      {% for author in authors %}
+      <li>
+        {{ author.first_name }} {{ author.last_name }} - {{ author.email }}
+      </li>
+    </ul>
+    {% endfor %}
+    <h1>Publishers</h1>
+    <ul>
+      {% for publisher in publishers %}
+      <li>
+        {{ publisher.name }} - {{ publisher.street_address }}, {{ publisher.city
+        }}, {{ publisher.state_province }}, {{ publisher.country }} - {{
+        publisher.website }}
+      </li>
+      {% endfor %}
+    </ul>
+    <h1>Books</h1>
+    <ul>
+      {% for book in books %}
+      <li>{{ book.title }} - {{ book.publication_date }}</li>
+      <ul>
+        <li>
+          Authors: {% for author in book.authors.all %} {{ author.first_name }}
+          {{ author.last_name }}{% if not forloop.last %}, {% endif %}{% endfor
+          %}
+        </li>
+        <li>Publisher: {{ book.publisher.name }}</li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

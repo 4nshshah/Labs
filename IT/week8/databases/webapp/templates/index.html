@@ -1,0 +1,18 @@
+{% for category in categories %}
+<h2>{{ category.name }}</h2>
+<a href="{% url 'category' category.id %}">View Websites</a>
+{% endfor %} {% block content %}
+<h1>Website Directory</h1>
+
+<a href="{% url 'add_category' %}">Add Category</a>
+<a href="{% url 'add_website' %}">Add Website</a>
+
+{% for category in categories %}
+<h2>{{ category.name }}</h2>
+<ul>
+  {% for website in category.website_set.all %}
+  <li><a href="{{ website.url }}">{{ website.title }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endfor %} {% endblock %}

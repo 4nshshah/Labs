@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Retrieve WORKS and LIVES</title>
+  </head>
+  <body>
+    <h1>Retrieve WORKS and LIVES</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="company_name">Company Name:</label>
+      <input type="text" id="company_name" name="company_name" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    {% if works_data %}
+    <h2>WORKS Data</h2>
+    <ul>
+      {% for work in works_data %}
+      <li>
+        {{ work.person_name }} - {{ work.company_name }} - {{ work.salary }}
+      </li>
+      {% endfor %}
+    </ul>
+    <h2>LIVES Data</h2>
+    <ul>
+      {% for live in lives_data %}
+      <li>{{ live.person_name }} - {{ live.street }} - {{ live.city }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>

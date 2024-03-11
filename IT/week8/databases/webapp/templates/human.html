@@ -1,0 +1,45 @@
+<!-- human.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Human Records</title>
+  </head>
+  <body>
+    <h1>Human Records</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="first_name">First Name:</label>
+      <select id="first_name" name="id" onchange="updateFields(this.value)">
+        <option value="">Select a name</option>
+        {% for human in humans %}
+        <option value="{{ human.id }}">{{ human.first_name }}</option>
+        {% endfor %}
+      </select>
+      <br /><br />
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" /><br />
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" name="phone" /><br />
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" /><br />
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" /><br /><br />
+      <input type="submit" name="update" value="Update" />
+      <input type="submit" name="delete" value="Delete" />
+    </form>
+
+    <script>
+      function updateFields(id) {
+        fetch(`/get_human/${id}/`)
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("last_name").value = data.last_name;
+            document.getElementById("phone").value = data.phone;
+            document.getElementById("address").value = data.address;
+            document.getElementById("city").value = data.city;
+          })
+          .catch((error) => console.error(error));
+      }
+    </script>
+  </body>
+</html>

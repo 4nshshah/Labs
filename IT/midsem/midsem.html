@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h2 {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      img {
+        width: "50";
+        height: "50";
+      }
+    </style>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap.css" />
+  </head>
+  <body>
+    <h2>Elective Subject Preference</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Deep Learning</p>
+        </div>
+        <div class="col">
+          <p>Software Testing and Analysis</p>
+        </div>
+        <div class="col">
+          <p>Digital Image Processing</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <img src="cat.0.jpg" alt="Deep Learning Textbook" width="150"/>
+          <button id="dl" class="btn">Vote</button>
+        </div>
+        <div class="col">
+          <img src="cat.1.jpg" alt="Software Textbook" width="150"/>
+          <button id="sw" class="btn">Vote</button>
+        </div>
+        <div class="col">
+          <img src="cat.2.jpg" alt="Image Processing Textbook" width="150"/>
+          <button id="ip" class="btn">Vote</button>
+        </div>
+      </div>
+    </div>
+    <br />
+    <button id="submit" class="btn-primary">Submit Votes</button>
+
+    <div id="results">
+      <!-- <input type="text" id="resultsh" readonly /> -->
+        <h1 id = "resultsh"></div>
+      <h2 id="dlresults"></h2>
+      <h2 id="swresults"></h2>
+      <h2 id="ipresults"></h2>
+      <div id="notoffered"></div>
+    </div>
+    <script>
+      $("document").ready(function () {
+        var dl = 0;
+        var sw = 0;
+        var ip = 0;
+        $("#dl").click(function () {
+          dl += 1;
+        });
+        $("#sw").click(function () {
+          sw += 1;
+        });
+        $("#ip").click(function () {
+          ip += 1;
+        });
+        $("#submit").click(function () {
+          $("#resultsh").text("Results");
+          $("#dlresults").text("Deep Learning: " + dl);
+          $("#swresults").text("Software Testing and Analysis: " + sw);
+          $("#ipresults").text("Digital Image Processing: " + ip);
+          var notOffered = ""
+          if(dl<10){
+            notOffered = "   Deep Learning" + " "+  notOffered;
+          }
+          if(sw<10){
+            notOffered = "   Software Testing and Analysis" + " " + notOffered;
+          }
+          if(ip<10){
+            notOffered = "   Digital Image Processing" + " " + notOffered;
+          }
+          if (notOffered != ""){
+            notOffered += " NOT OFFERED THIS SEMESTER";
+            $("#notoffered").text(notOffered);
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>

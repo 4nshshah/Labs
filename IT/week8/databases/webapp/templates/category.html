@@ -1,0 +1,7 @@
+<h1>{{ category.name }}</h1>
+
+<ul>
+  {% for website in websites %}
+  <li><a href="{{ website.url }}">{{ website.title }}</a></li>
+  {% endfor %}
+</ul>
